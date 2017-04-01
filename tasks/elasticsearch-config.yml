@@ -22,9 +22,11 @@
   register: config_updated
   notify: restart elasticsearch
 
+- debug: var=instance_default_file
 #Copy the instance specific default file
 - name: Copy Default File for Instance
   template: src=elasticsearch.j2 dest={{instance_default_file}} mode=0644 force=yes
+  register: instance_config_updated
   notify: restart elasticsearch
 
 #Copy the instance specific init file
