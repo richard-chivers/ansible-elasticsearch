@@ -1,0 +1,11 @@
+{{ log_dir }}/*.log {
+    daily
+    rotate 12
+    size 50M
+    compress
+    delaycompress
+    missingok
+    notifempty
+    copytruncate
+    create 644 elasticsearch elasticsearch
+}
