@@ -37,3 +37,8 @@
   apt: deb=/tmp/elasticsearch-{{ es_version }}.deb
   when: not es_use_repository
   register: elasticsearch_install_from_package
+
+- name: Configure logrotate
+  template:
+    src: logrotate.j2
+    dest: /etc/logrotate.d/{{ es_instance_name }}_elasticsearch
