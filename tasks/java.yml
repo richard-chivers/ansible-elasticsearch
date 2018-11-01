@@ -13,11 +13,11 @@
 - name: Debian - Ensure Java is installed
   apt: name={{ java }} state={{java_state}} update_cache=yes
   when: ansible_os_family == 'Debian'
-  always_run: yes
+  check_mode: no
 
 - command: java -version 2>&1 | grep OpenJDK
   register: open_jdk
-  always_run: yes
+  check_mode: no
   changed_when: False
 
 #https://github.com/docker-library/openjdk/issues/19 - ensures tests pass due to java 8 broken certs
